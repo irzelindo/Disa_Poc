@@ -1,5 +1,5 @@
 import express, { request, response } from 'express';
-//import './database';
+import './database';
 //import { router } from './routes';
 
 const app = express();
