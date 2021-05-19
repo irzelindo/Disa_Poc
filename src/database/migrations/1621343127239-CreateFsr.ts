@@ -125,12 +125,12 @@ export class CreateFsr1621343127239 implements MigrationInterface {
                     {
                         name: "updated_at",
                         type: "timestamp",
-                        default: "now()"
+                        default: "now()",
                     },
                     {
                         name: "created_at",
                         type: "timestamp",
-                        default: "now()"
+                        default: "now()",
                     }
                     
                 ],
