@@ -1,13 +1,12 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, JoinColumn, ManyToOne } from "typeorm";
-import { v4 as uuid } from "uuid";
 import { UnidadeSanitaria } from "./UnidadeSanitaria";
 
 
 @Entity("fsr")
 class FSR {
-    
+    //@PrimaryGeneratedColumn()
     @PrimaryColumn()
-    readonly id: string;
+    amostraPCR: string;
 
     @Column()
     nrOrdem: string; 
@@ -83,13 +82,30 @@ class FSR {
     @CreateDateColumn()
     created_at: Date;
 
-    constructor(){
-        if(!this.id){
-            this.id = uuid()
+   /* constructor(){
+        let labprefix: string = "001";
+        let pat1: string = "00000";
+        let pat2: string = "0000";
+        let pat3: string = "000";
+        let pat4: string = "00";
+        let pat5: string = "0";
+        let code: number = 0;
+        let codeamostra : string = "";
+        if(!this.amostraPCR){
+            code += 1;
+
+            codeamostra = String(code);
+
+            if(codeamostra.length === 1)
+
+
+
+
+
+
         }
 
-    }
-
+    }*/
 
 }
 

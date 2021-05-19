@@ -8,8 +8,9 @@ export class CreateFsr1621343127239 implements MigrationInterface {
                 name: "fsr",
                 columns:[
                     {
-                        name: "id",
-                        type:"uuid",
+                        name: "amostraPCR",
+                        type: "varchar",
+                       // generationStrategy: "increment",
                         isPrimary: true
                     },
                     {
