@@ -1,27 +1,27 @@
 import { Request, Response } from "express";
-import { getCustomRepository } from "typeorm";
-import { UnidadeSanitariaRepository } from "../repositories/UnidadeSanitariaRepository"; 
+import { UnidadeSanitariaService } from "../services/UnidadeSanitariaService"
+
+
 
 
 class UnidadeSanitariaController {
 
   async create(request: Request, response: Response){
     const { UsFacilityNationalCode, UsDisaCode, UsNome, UsProvincia, UsDistrito } = request.body;
-    const unidadeSanitariaRepository = getCustomRepository(UnidadeSanitariaRepository);
+    
+    const unidadeSanitariaService = new UnidadeSanitariaService();
 
-    const unidadeSanitaria = unidadeSanitariaRepository.create({
+    try{
 
-        UsFacilityNationalCode,
-        UsDisaCode,
-        UsNome,
-        UsProvincia,
-        UsDistrito,
-    })
+      const unidadeSanitaria = await unidadeSanitariaService.create({UsFacilityNationalCode, UsDisaCode, UsNome, UsProvincia, UsDistrito});
+      return response.json(unidadeSanitaria);
+    }catch (err){
+      return response.status(400).json({
+        message: err.message
+      });
+    }
 
 
-    await unidadeSanitariaRepository.save(unidadeSanitaria);
-
-    return response.json(unidadeSanitaria);
 
   }  
 

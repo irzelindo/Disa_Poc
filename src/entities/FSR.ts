@@ -85,31 +85,6 @@ class FSR {
     @CreateDateColumn()
     created_at: Date;
 
-   /* constructor(){
-        let labprefix: string = "001";
-        let pat1: string = "00000";
-        let pat2: string = "0000";
-        let pat3: string = "000";
-        let pat4: string = "00";
-        let pat5: string = "0";
-        let code: number = 0;
-        let codeamostra : string = "";
-        if(!this.amostraPCR){
-            code += 1;
-
-            codeamostra = String(code);
-
-            if(codeamostra.length === 1)
-
-
-
-
-
-
-        }
-
-    }*/
-
 }
 
 export { FSR };
