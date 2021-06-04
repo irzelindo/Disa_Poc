@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {IsNull, MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class CreateFsr1621343127239 implements MigrationInterface {
 
@@ -19,27 +19,7 @@ export class CreateFsr1621343127239 implements MigrationInterface {
                         isNullable: true
                     },
                     {
-                        name: "nrLabOrdem",
-                        type: "varchar",
-                        isNullable: true
-                    },
-                    {
-                        name: "childNID",
-                        type: "varchar",
-                        isNullable: true
-                    },
-                    {
-                        name: "childName",
-                        type: "varchar",
-                        isNullable: true
-                    },
-                    {
-                        name: "childDOB",
-                        type: "timestamp",
-                        isNullable: true
-                    },
-                    {
-                        name: "childGender",
+                        name: "nrLab",
                         type: "varchar",
                         isNullable: true
                     },
@@ -51,12 +31,12 @@ export class CreateFsr1621343127239 implements MigrationInterface {
                     {
                         name: "solicitacaoData",
                         type: "timestamp",
-                        isNullable: true
+                        isNullable: false
                     },
                     {
                         name: "colheitaData",
                         type: "timestamp",
-                        isNullable: true
+                        isNullable: false
                     },
                     {
                         name: "maeNome",
@@ -94,22 +74,7 @@ export class CreateFsr1621343127239 implements MigrationInterface {
                         isNullable: true
                     },
                     {
-                        name: "colheitaTipo",
-                        type: "varchar",
-                        isNullable: true
-                    },
-                    {
                         name: "amostraPCRAnterior",
-                        type: "varchar",
-                        isNullable: true
-                    },
-                    {
-                        name: "amostraTipo",
-                        type: "varchar",
-                        isNullable: true
-                    },
-                    {
-                        name: "processamentoTipo",
                         type: "varchar",
                         isNullable: true
                     },
@@ -120,8 +85,30 @@ export class CreateFsr1621343127239 implements MigrationInterface {
                     },
                     {
                         name: "Us_FacilityNationalCode",
-                        type: "varchar"
+                        type: "varchar",
+                        isNullable:false
                     },
+                    {
+                        name: "childNID",
+                        type: "varchar",
+                        isNullable:false
+                    },
+                    {
+                        name: "colheitaTipo_id",
+                        type: "varchar",
+                        isNullable: false
+                    },
+                    {
+                        name: "amostraTipo_id",
+                        type: "varchar",
+                        isNullable: false
+                    },
+                    {
+                        name: "processamentoTipo_id",
+                        type: "varchar",
+                        isNullable: false
+                    },
+                    
                     {
                         name: "updated_at",
                         type: "timestamp",
@@ -143,6 +130,39 @@ export class CreateFsr1621343127239 implements MigrationInterface {
                         onDelete: "SET NULL",
                         onUpdate: "SET NULL"
                     },
+                    {
+                        name: "FKtipoProcessamento",
+                        referencedTableName: "TipoProcessamento",
+                        referencedColumnNames:["id"],
+                        columnNames:["processamentoTipo_id"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
+                    },
+                    {
+                        name: "FKcrianca",
+                        referencedTableName: "crianca",
+                        referencedColumnNames:["nid"],
+                        columnNames:["childNID"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
+                    },
+                    {
+                        name: "FKtipoColheita",
+                        referencedTableName: "tipoColheita",
+                        referencedColumnNames:["id"],
+                        columnNames:["colheitaTipo_id"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
+                    },
+                    {
+                        name: "FKtipoAmostra",
+                        referencedTableName: "tipoAmostra",
+                        referencedColumnNames:["id"],
+                        columnNames:["amostraTipo_id"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
+                    },
+                    
                 ],
 
             })
